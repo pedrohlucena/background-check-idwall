@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,20 +23,20 @@ public class WantedController {
     private WantedRepository wantedRepository;
 	
 	@GetMapping("/")
-    public List<Wanted> getWanteds(@RequestParam Map<String,String> queryParameters) {
+    public ResponseEntity<?> getWanteds(@RequestParam Map<String,String> queryParameters) {
 		try {
 			SchemaValidator validator = new SchemaValidator();
-			GetWantedsParameters parameters = validator.validate();
+			GetWantedsParameters parameters = validator.validate(queryParameters);
+			System.out.println(parameters.toString());
 			GetWantedBusiness business = new GetWantedBusiness(parameters);
 			
-	        return wantedRepository.findAll();
+			Wanted[] wanteds = wantedRepository.findAll();
+			
+			return ResponseEntity.ok(
+					wantedRepository.findAll()
+			);
 		} catch (Exception e) {
-			// TODO: handle exception
+			return ResponseEntity.status(500).body(e);
 		}
     }
-	
-//	@GetMapping
-//    public List<Ingredient> getAllIngredients() {
-//        return ingredientRepository.findAll();
-//    }
 }

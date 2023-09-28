@@ -5,7 +5,7 @@ import java.util.List;
 import java.lang.reflect.Field;
 
 public class ObjectUtils {
-    public static String[] getObjectKeys(Object obj) {
+    public static List<String> getObjectKeys(Object obj) {
         Class<?> clazz = obj.getClass();
         
         Field[] fields = clazz.getDeclaredFields();
@@ -16,6 +16,6 @@ public class ObjectUtils {
             keys.add(field.getName());
         }
 
-        return keys.toArray(new String[0]);
+        return keys;
     }
 }
