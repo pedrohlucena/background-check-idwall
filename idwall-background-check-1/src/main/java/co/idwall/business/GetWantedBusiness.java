@@ -8,4 +8,14 @@ public class GetWantedBusiness {
 	public GetWantedBusiness(GetWantedsParameters parameters) {
         this.parameters = parameters;
     }
+	
+//	private getEventAccordingToParameters() {
+//        this.parameters = parameters;
+//    }
+//	
+//	public getWanteds() {
+//		etEventAccordingToParameters();
+//    }
+	
+
 }

@@ -3,11 +3,10 @@ package co.idwall.model;
 public class GetWantedsParameters {
 	private String full_name;
     private String exact_match;
-    private String birthdate;
+    private String birth_date;
     private String characteristics;
     private String nationality;
     private String spoken_language;
-    private String image_url;
 
     public String getFull_name() {
         return full_name;
@@ -25,12 +24,12 @@ public class GetWantedsParameters {
         this.exact_match = exact_match;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public String getBirth_date() {
+        return birth_date;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setBirth_date(String birth_date) {
+        this.birth_date = birth_date;
     }
 
     public String getCharacteristics() {
@@ -55,13 +54,5 @@ public class GetWantedsParameters {
 
     public void setSpoken_language(String spoken_language) {
         this.spoken_language = spoken_language;
-    }
-
-    public String getImage_url() {
-        return image_url;
-    }
-
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
     }
 }
