@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import co.idwall.model.Wanted;
 
-@Repository
+@Repository()
 public interface WantedRepository extends JpaRepository<Wanted, Integer> {}
 
 

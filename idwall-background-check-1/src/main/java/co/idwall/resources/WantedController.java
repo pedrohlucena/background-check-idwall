@@ -15,43 +15,51 @@ import co.idwall.business.GetWantedBusiness;
 import co.idwall.errors.ErrorResponses;
 import co.idwall.exceptions.BadQueryParametersError;
 import co.idwall.exceptions.ExactMatchPassedWithFullNameError;
+import co.idwall.exceptions.InvalidBirthDateFormatError;
 import co.idwall.model.GetWantedsParameters;
 import co.idwall.model.Wanted;
 import co.idwall.repository.WantedRepository;
 import co.idwall.responses.ErrorResponse;
+import co.idwall.responses.GetWantedsResponse;
 import co.idwall.utils.SchemaValidator;
 
 @RestController
 @RequestMapping("wanteds")
 public class WantedController {
-    @Autowired
-    private WantedRepository wantedRepository;
+	private GetWantedBusiness business;
 	
-//    produces = "application/json"
-	@GetMapping(produces = "application/json")
+	@Autowired
+    public WantedController(GetWantedBusiness business) {
+		this.business = business;
+    }
+	
+	@GetMapping()
     public ResponseEntity<?> getWanteds(@RequestParam Map<String,String> queryParameters) {
 		try {
 			SchemaValidator validator = new SchemaValidator();
+			
 			GetWantedsParameters parameters = validator.validate(queryParameters);
-			GetWantedBusiness business = new GetWantedBusiness(parameters);
+			
+			business.setParameters(parameters);
+			
+			GetWantedsResponse response = business.getWanteds();
 
-			return ResponseEntity
-					.status(HttpStatus.OK)
-					.body(
-							wantedRepository.findAll()
-					);
+			return ResponseEntity.status(HttpStatus.OK).body(response);
 		} catch (ExactMatchPassedWithFullNameError e) {
-			return ResponseEntity
-					.status(HttpStatus.BAD_REQUEST)
-					.body(ErrorResponses.getExactMatchPassedWithFullNameResponse());
+			ErrorResponse response = ErrorResponses.getExactMatchPassedWithFullNameResponse();
+			
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+		} catch (InvalidBirthDateFormatError e) {
+			ErrorResponse response = ErrorResponses.getInvalidBirthDateFormatResponse();
+			
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 		} catch (BadQueryParametersError e) {
-			return ResponseEntity
-					.status(HttpStatus.BAD_REQUEST)
-					.body(ErrorResponses.getBadQueryParametersResponse());
+			ErrorResponse response = ErrorResponses.getBadQueryParametersResponse();
+			
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 		} catch (Exception e) {
-			return ResponseEntity
-					.status(HttpStatus.INTERNAL_SERVER_ERROR)
-					.body(ErrorResponses.getProblemsCallingAPIResponse());
+			ErrorResponse response = ErrorResponses.getProblemsCallingAPIResponse();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
 		}
     }
 }

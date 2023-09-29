@@ -20,7 +20,14 @@ public class ErrorResponses {
     public static ErrorResponse getExactMatchPassedWithFullNameResponse() {
     	return new ErrorResponse(
 			"0003", 
-			"If exact_match is passed, full_name must exists"
+			"If exact_match is passed, alias must exists"
+		);
+    }
+    
+    public static ErrorResponse getInvalidBirthDateFormatResponse() {
+    	return new ErrorResponse(
+			"0004", 
+			"birth_date parameter must follow the MM-dd-yyyy pattern"
 		);
     }
 }
