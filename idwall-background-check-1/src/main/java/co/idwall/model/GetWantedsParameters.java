@@ -1,5 +1,7 @@
 package co.idwall.model;
 
+import javax.persistence.Lob;
+
 public class GetWantedsParameters {
 	private String wanted_origin_id;
 	private String alias;

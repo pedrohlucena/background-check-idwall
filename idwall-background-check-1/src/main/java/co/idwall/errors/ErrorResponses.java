@@ -30,4 +30,11 @@ public class ErrorResponses {
 			"birth_date parameter must follow the MM-dd-yyyy pattern"
 		);
     }
+    
+    public static ErrorResponse getNotFoundWantedResponse() {
+    	return new ErrorResponse(
+			"0005", 
+			"None wanted has been found"
+		);
+    }
 }

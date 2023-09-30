@@ -27,6 +27,7 @@ public class Wanted {
     @Lob
     private String charges;
     
+    
     @Lob
     private String nationality;
     
