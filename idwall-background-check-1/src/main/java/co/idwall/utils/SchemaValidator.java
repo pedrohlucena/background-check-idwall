@@ -37,7 +37,7 @@ public class SchemaValidator {
 	public GetWantedsParameters validateOtherParameters(Map<String, String> body) {
 		GetWantedsParameters parameters = new GetWantedsParameters();
 		
-		List<String> allowedQueryParams = ObjectUtils.getObjectKeys(parameters);
+		List<String> allowedQueryParams = ClassUtils.getClassPropertyNames(parameters);
 		
 		body.forEach((key, value) -> {
 			boolean paramIsValid = allowedQueryParams.contains(key);
@@ -45,16 +45,16 @@ public class SchemaValidator {
 			if(!paramIsValid) throw new BadQueryParametersError();
 			
 			if(paramIsValid) {
-				if (key == "wanted_origin_id") parameters.setWanted_origin_id(value);
-				if (key == "alias") parameters.setAlias(value);
-				if (key == "exact_match") parameters.setExact_match(value);
-				if (key == "birth_date") parameters.setBirth_date(value);
-				if (key == "distinguishing_marks") parameters.setDistinguishing_marks(value);
-				if (key == "nationality") parameters.setNationality(value);
-				if (key == "languages") parameters.setLanguages(value);
-				if (key == "sex") parameters.setSex(value);
-				if (key == "wanted_in") parameters.setWanted_in(value);
-				if (key == "charges") parameters.setCharges(value);
+				if (key.equals("wanted_origin_id")) parameters.setWantedOriginId(value);
+				if (key.equals("alias")) parameters.setAlias(value);
+				if (key.equals("exact_match")) parameters.setExactMatch(value);
+				if (key.equals("birth_date")) parameters.setBirthDate(value);
+				if (key.equals("distinguishing_marks")) parameters.setDistinguishingMarks(value);
+				if (key.equals("nationality")) parameters.setNationality(value);
+				if (key.equals("languages")) parameters.setLanguages(value);
+				if (key.equals("sex")) parameters.setSex(value);
+				if (key.equals("wanted_in")) parameters.setWantedIn(value);
+				if (key.equals("charges")) parameters.setCharges(value);
 			};
 		});
 		

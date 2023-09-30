@@ -12,11 +12,15 @@ public class GetWantedsParameters {
     private String wanted_in;
     private String charges;
     
-	public String getWanted_origin_id() {
+	public GetWantedsParameters() {	
+		super();
+	}
+    
+	public String getWantedOriginId() {
 		return wanted_origin_id;
 	}
 	
-	public void setWanted_origin_id(String wanted_origin_id) {
+	public void setWantedOriginId(String wanted_origin_id) {
 		this.wanted_origin_id = wanted_origin_id;
 	}
 	
@@ -28,27 +32,27 @@ public class GetWantedsParameters {
 		this.alias = alias;
 	}
 	
-	public String getExact_match() {
+	public String getExactMatch() {
 		return exact_match;
 	}
 	
-	public void setExact_match(String exact_match) {
+	public void setExactMatch(String exact_match) {
 		this.exact_match = exact_match;
 	}
 	
-	public String getBirth_date() {
+	public String getBirthDate() {
 		return birth_date;
 	}
 	
-	public void setBirth_date(String birth_date) {
+	public void setBirthDate(String birth_date) {
 		this.birth_date = birth_date;
 	}
 	
-	public String getDistinguishing_marks() {
+	public String getDistinguishingMarks() {
 		return distinguishing_marks;
 	}
 	
-	public void setDistinguishing_marks(String distinguishing_marks) {
+	public void setDistinguishingMarks(String distinguishing_marks) {
 		this.distinguishing_marks = distinguishing_marks;
 	}
 	
@@ -76,14 +80,14 @@ public class GetWantedsParameters {
 		this.sex = sex;
 	}
 	
-	public String getWanted_in() {
+	public String getWantedIn() {
 		return wanted_in;
 	}
 	
-	public void setWanted_in(String wanted_in) {
+	public void setWantedIn(String wanted_in) {
 		this.wanted_in = wanted_in;
 	}
-	
+
 	public String getCharges() {
 		return charges;
 	}

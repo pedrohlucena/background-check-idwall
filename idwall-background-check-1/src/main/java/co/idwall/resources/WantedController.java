@@ -1,6 +1,5 @@
 package co.idwall.resources;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,6 @@ import co.idwall.exceptions.BadQueryParametersError;
 import co.idwall.exceptions.ExactMatchPassedWithFullNameError;
 import co.idwall.exceptions.InvalidBirthDateFormatError;
 import co.idwall.model.GetWantedsParameters;
-import co.idwall.model.Wanted;
-import co.idwall.repository.WantedRepository;
 import co.idwall.responses.ErrorResponse;
 import co.idwall.responses.GetWantedsResponse;
 import co.idwall.utils.SchemaValidator;
@@ -39,6 +36,8 @@ public class WantedController {
 			SchemaValidator validator = new SchemaValidator();
 			
 			GetWantedsParameters parameters = validator.validate(queryParameters);
+			
+			System.out.println(parameters.getWantedOriginId());
 			
 			business.setParameters(parameters);
 			
