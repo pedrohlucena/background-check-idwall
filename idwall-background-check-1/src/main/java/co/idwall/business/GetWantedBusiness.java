@@ -34,13 +34,10 @@ public class GetWantedBusiness {
     }
 	
 	private List<Wanted> getWantedsAccordingToParameters() {		
-		boolean hasQueryParameters = ObjectUtils
-				.getKeys(parameters).size() != 0;
-		
-		String wantedOriginIdParam = parameters.getWantedOriginId();
-		
+		boolean hasQueryParameters = !ObjectUtils.getKeys(parameters).isEmpty();
 		if(!hasQueryParameters) return repository.findAll();
-		
+
+		String wantedOriginIdParam = parameters.getWantedOriginId();
 		if(wantedOriginIdParam != null) {
 			Optional<Wanted> wanted = repository.findById(wantedOriginIdParam);
 			
