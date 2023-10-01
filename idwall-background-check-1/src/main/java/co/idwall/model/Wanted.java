@@ -22,156 +22,106 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "FBI_INTERPOL_WANTED_CRIMINALS")
 public class Wanted {
 	@Id
-	private String ncic;
-	
-    @Lob
-    private String charges;
-    
-    
-    @Lob
-    private String nationality;
-    
-    @Lob
-    private String dates_of_birth_used;
-    
-    @Lob
-    private String distinguishing_marks;
-    
-    @Lob
-    private String eyes_color;
-    
-    @Lob
-    private String forename;
-    
-    @Lob
-    private String hair_color;
-    
-    @Lob
-    private String height;
-    
-    @Lob
-    private String images;
-    
-    @Lob
-    private String issuing_country_id;
-    
-    @Lob
-    private String languages;
-    
-    @Lob
-    private String name;
-    
-    @Lob
-    private String place_of_birth;
-    
-    @Lob
-    private String sex;
-    
-    @Lob
-    private String weight;
-    
-    @Lob
-    private String wanted_origin;
-    
-    @Lob
-    private String age_range;
-    
-    @Lob
-    private String aliases;
-    
-    @Lob
-    private String wanted_origin_id;
-    
-    @Lob
-    private String age_max;
-    
-    @Lob
-    private String age_min;
-    
-    @Lob
-    private String build;
-    
-    @Lob
-    private String complexion;
-    
-    @Lob
-    private String details;
-    
-    @Lob
-    private String eyes_raw;
-    
-    @Lob
-    private String field_offices;
-    
-    @Lob
-    private String hair_raw;
-    
-    @Lob
-    private String height_max;
-    
-    @Lob
-    private String height_min;
-    
-    @Lob
-    private String modified;
+	private String wanted_origin_id;
 
-    
-    @Lob
-    private String occupations;
-    
-    @Lob
-    private String person_classification;
-    
-    @Lob
-    private String possible_countries;
-    
-    @Lob
-    private String possible_states;
-    
-    @Lob
-    private String poster_classification;
-    
-    @Lob
-    private String publication;
-    
-    @Lob
-    private String race;
-    
-    @Lob
-    private String race_raw;
-    
-    @Lob
-    private String remarks;
-    
-    @Lob
-    private String reward_text;
-    
-    @Lob
-    private String status;
-    
-    @Lob
-    private String subjects;
-    
-    @Lob
-    private String suspects;
-    
-    @Lob
-    private String title;
-    
-    @Lob
-    private String url;
-    
-    @Lob
-    private String warning_message;
-    
-    @Lob
-    private String weight_max;
-    
-    @Lob
-    private String weight_min;
-    
-    @Lob
-    private String analyzed_at;
+    private String charges;
+
+    private String nationality;
+
+    private String dates_of_birth_used;
+
+    private String distinguishing_marks;
+
+    private String eyes_color;
+
+    private String forename;
+
+    private String hair_color;
+
+    private String height;
+
+        private String images;
+
+        private String issuing_country_id;
+
+        private String languages;
+
+        private String name;
+
+        private String place_of_birth;
+
+        private String sex;
+
+        private String weight;
+
+        private String wanted_origin;
+
+        private String age_range;
+
+        private String aliases;
+
+        private String ncic;
+
+        private String age_max;
+
+        private String age_min;
+
+        private String build;
+
+        private String complexion;
+
+        private String details;
+
+        private String eyes_raw;
+
+        private String field_offices;
+
+        private String hair_raw;
+
+        private String height_max;
+
+        private String height_min;
+
+        private String modified;
+
+
+        private String occupations;
+
+        private String person_classification;
+
+        private String possible_countries;
+
+        private String possible_states;
+
+        private String poster_classification;
+
+        private String publication;
+
+        private String race;
+
+        private String race_raw;
+
+        private String remarks;
+
+        private String reward_text;
+
+        private String status;
+
+        private String subjects;
+
+        private String suspects;
+
+        private String title;
+
+        private String url;
+
+        private String warning_message;
+
+        private String weight_max;
+
+        private String weight_min;
+
+        private String analyzed_at;
 
 	public String getNcic() {
 		return ncic;
