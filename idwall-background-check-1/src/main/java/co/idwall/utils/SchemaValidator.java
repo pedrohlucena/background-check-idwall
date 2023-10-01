@@ -14,36 +14,36 @@ import co.idwall.regexs.Regexs;
 public class SchemaValidator {
 	public void validateExactMatch(Map<String, String> body) {
 		if (
-			(body.get("exact_match") != null && body.get("alias") == null)
+				(body.get("exact_match") != null && body.get("alias") == null)
 		) {
 			throw new ExactMatchPassedWithFullNameError();
 		}
 	}
-	
-	public void validateBirthDate(Map<String, String> body) {
-		String birthDate = body.get("birth_date");
-		
-		if (birthDate == null) return;
 
-        Pattern regex = Regexs.MONTH_DAY_YEAR_DATE.getPattern();
+//	public void validateBirthDate(Map<String, String> body) {
+//		String birthDate = body.get("birth_date");
+//
+//		if (birthDate == null) return;
+//
+//        Pattern regex = Regexs.MONTH_DAY_YEAR_DATE.getPattern();
+//
+//        Matcher regexMatcher = regex.matcher(birthDate);
+//
+//        if (!regexMatcher.find()) {
+//            throw new InvalidBirthDateFormatError();
+//        }
+//	}
 
-        Matcher regexMatcher = regex.matcher(birthDate);
-        
-        if (!regexMatcher.find()) {
-            throw new InvalidBirthDateFormatError();
-        }
-	}
-	
 	public GetWantedsParameters validateOtherParameters(Map<String, String> body) {
 		GetWantedsParameters parameters = new GetWantedsParameters();
-		
+
 		List<String> allowedQueryParams = ClassUtils.getClassPropertyNames(parameters);
-		
+
 		body.forEach((key, value) -> {
 			boolean paramIsValid = allowedQueryParams.contains(key);
 
 			if(!paramIsValid) throw new BadQueryParametersError();
-			
+
 			if(paramIsValid) {
 				if (key.equals("wanted_origin_id")) parameters.setWantedOriginId(value);
 				if (key.equals("alias")) parameters.setAlias(value);
@@ -57,16 +57,16 @@ public class SchemaValidator {
 				if (key.equals("charges")) parameters.setCharges(value);
 			};
 		});
-		
+
 		return parameters;
 	}
-	
-	public GetWantedsParameters validate(Map<String, String> body) {	
+
+	public GetWantedsParameters validate(Map<String, String> body) {
 		validateExactMatch(body);
-		validateBirthDate(body);
-		
+//		validateBirthDate(body);
+
 		GetWantedsParameters parameters = validateOtherParameters(body);
-		
+
 		return parameters;
 	}
 }

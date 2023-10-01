@@ -38,8 +38,6 @@ public class WantedController {
 			
 			GetWantedsParameters parameters = validator.validate(queryParameters);
 			
-			System.out.println(parameters.getWantedOriginId());
-			
 			business.setParameters(parameters);
 			
 			GetWantedsResponse response = business.getWanteds();
@@ -47,19 +45,19 @@ public class WantedController {
 			return ResponseEntity.status(HttpStatus.OK).body(response);
 		} catch (BadQueryParametersError e) {
 			ErrorResponse response = ErrorResponses.getBadQueryParametersResponse();
-			
+
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 		} catch (WantedNotFound e) {
 			ErrorResponse response = ErrorResponses.getNotFoundWantedResponse();
-			
+
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
 		} catch (ExactMatchPassedWithFullNameError e) {
 			ErrorResponse response = ErrorResponses.getExactMatchPassedWithFullNameResponse();
-			
+
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 		} catch (InvalidBirthDateFormatError e) {
 			ErrorResponse response = ErrorResponses.getInvalidBirthDateFormatResponse();
-			
+
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 		}  catch (Exception e) {
 			ErrorResponse response = ErrorResponses.getProblemsCallingAPIResponse();
