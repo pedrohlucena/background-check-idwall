@@ -1,22 +1,18 @@
 package co.idwall.business;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.Lob;
-
-import org.hibernate.engine.jdbc.internal.LobCreatorBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import co.idwall.exceptions.WantedNotFound;
 import co.idwall.model.GetWantedsParameters;
 import co.idwall.model.Wanted;
+import co.idwall.model.WantedSearchCriteria;
 import co.idwall.repository.WantedRepository;
 import co.idwall.responses.GetWantedsResponse;
-import co.idwall.utils.ClassUtils;
+import co.idwall.specifications.WantedSpecification;
 import co.idwall.utils.ObjectUtils;
 
 @Service
@@ -49,7 +45,15 @@ public class GetWantedBusiness {
 			return List.of(wanted.get());
 		}
 		
-		return List.of();
+		WantedSearchCriteria searchCriteria = new WantedSearchCriteria();
+		
+		String aliasParam = parameters.getAlias();
+		
+		if(aliasParam != null) {
+			searchCriteria.setAliases(aliasParam);
+		}
+		
+		return repository.findAll(new WantedSpecification(searchCriteria));
 	}
 
 	public void setParameters(GetWantedsParameters parameters) {

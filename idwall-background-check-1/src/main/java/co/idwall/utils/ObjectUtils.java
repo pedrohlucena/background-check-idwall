@@ -3,8 +3,6 @@ package co.idwall.utils;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 public class ObjectUtils {
 	public static List<String> getKeys(Object obj) {

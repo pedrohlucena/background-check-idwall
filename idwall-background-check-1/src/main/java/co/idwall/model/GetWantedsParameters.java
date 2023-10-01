@@ -1,11 +1,9 @@
 package co.idwall.model;
 
-import javax.persistence.Lob;
-
 public class GetWantedsParameters {
 	private String wanted_origin_id;
 	private String alias;
-    private String exact_match;
+    private boolean exact_match;
     private String birth_date;
     private String distinguishing_marks;
     private String nationality;
@@ -34,11 +32,11 @@ public class GetWantedsParameters {
 		this.alias = alias;
 	}
 	
-	public String getExactMatch() {
+	public boolean getExactMatch() {
 		return exact_match;
 	}
 	
-	public void setExactMatch(String exact_match) {
+	public void setExactMatch(boolean exact_match) {
 		this.exact_match = exact_match;
 	}
 	
