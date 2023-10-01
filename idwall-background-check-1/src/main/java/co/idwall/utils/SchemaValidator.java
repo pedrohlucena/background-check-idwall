@@ -48,15 +48,15 @@ public class SchemaValidator {
 			
 			if(paramIsValid) {
 				if (key.equals("wanted_origin_id")) parameters.setWantedOriginId(value);
-//				if (key.equals("alias")) parameters.setAlias(value);
-//				if (key.equals("exact_match")) parameters.setExactMatch(value);
-//				if (key.equals("birth_date")) parameters.setBirthDate(value);
-//				if (key.equals("distinguishing_marks")) parameters.setDistinguishingMarks(value);
-//				if (key.equals("nationality")) parameters.setNationality(value);
-//				if (key.equals("languages")) parameters.setLanguages(value);
-//				if (key.equals("sex")) parameters.setSex(value);
-//				if (key.equals("wanted_in")) parameters.setWantedIn(value);
-//				if (key.equals("charges")) parameters.setCharges(value);
+				if (key.equals("alias")) parameters.setAlias(value);
+				if (key.equals("exact_match")) parameters.setExactMatch(value);
+				if (key.equals("birth_date")) parameters.setBirthDate(value);
+				if (key.equals("distinguishing_marks")) parameters.setDistinguishingMarks(value);
+				if (key.equals("nationality")) parameters.setNationality(value);
+				if (key.equals("languages")) parameters.setLanguages(value);
+				if (key.equals("sex")) parameters.setSex(value);
+				if (key.equals("wanted_in")) parameters.setWantedIn(value);
+				if (key.equals("charges")) parameters.setCharges(value);
 			};
 		});
 		
@@ -64,8 +64,8 @@ public class SchemaValidator {
 	}
 	
 	public GetWantedsParameters validate(Map<String, String> body) {	
-//		validateExactMatch(body);
-//		validateBirthDate(body);
+		validateExactMatch(body);
+		validateBirthDate(body);
 		
 		GetWantedsParameters parameters = validateOtherParameters(body);
 		
